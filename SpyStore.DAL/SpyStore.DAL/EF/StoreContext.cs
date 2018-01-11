@@ -18,8 +18,10 @@ namespace SpyStore.DAL.EF
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(
-                @"Server=(localdb)\mssqllocaldb;Database=SpyStore;Trusted_Connection=True;MultipleActiveResultSet=True;", options => options.EnableRetryOnFailure());
+                @"Server=(localdb)\mssqllocaldb;Database=SpyStore;Trusted_Connection=True;MultipleActiveResultSets=True;", options => options.EnableRetryOnFailure());
             }
         }
+
+        public DbSet<Category> Categories { get; set; }
     }
 }
