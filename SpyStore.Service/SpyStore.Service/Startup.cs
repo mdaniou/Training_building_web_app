@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SpyStore.DAL.Initializers;
+using SpyStore.DAL.EF;
+using Microsoft.EntityFrameworkCore;
 
 namespace SpyStore.Service
 {
@@ -32,6 +34,10 @@ namespace SpyStore.Service
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddDbContext<StoreContext>(
+                options => options.UseSqlServer(
+                    Configuration.GetConnectionString("SpyStore")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
